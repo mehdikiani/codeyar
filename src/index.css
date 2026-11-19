@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Vazirmatn", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    direction: rtl;
+    text-align: right;
+  }
+
+  code,
+  pre,
+  kbd,
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "calt" 0;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  pre {
+    text-align: left;
+  }
+}
+
+/* Classroom projector font-scale utilities */
+html[data-font-scale="sm"] {
+  font-size: 14px;
+}
+html[data-font-scale="md"] {
+  font-size: 16px;
+}
+html[data-font-scale="lg"] {
+  font-size: 18px;
+}
+html[data-font-scale="xl"] {
+  font-size: 20px;
+}
+
+/* Projector high-contrast enhancement */
+html[data-projector="true"] body {
+  letter-spacing: 0.01em;
+}
+
+/* CodeMirror strict LTR container */
+.cm-ltr-wrapper {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+.cm-ltr-wrapper .cm-editor {
+  height: 100%;
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  outline: none;
+}
+
+.cm-ltr-wrapper .cm-scroller {
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+.cm-ltr-wrapper .cm-activeLineHighlight {
+  background-color: rgba(14, 165, 233, 0.22) !important;
+}
+
+/* Subtle custom scrollbars for classroom clarity */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Clean print layout for Homework Worksheets */
+@media print {
+  aside,
+  header {
+    display: none !important;
+  }
+  body,
+  main {
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+}
+
